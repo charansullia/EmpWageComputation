@@ -10,13 +10,15 @@ namespace EmpWage
         public const int IS_PART_TIME_PRESENT = 2;
         public const int empRatePerHr = 20;
         public const int WorkingDayPerMonth = 20;
+        public const int WorkingHrPerMonth = 100;
         public void EmpComputation()
         {
             int empHr = 0;
-            int empWage = 0;
-            int totalempWage = 0;
-            for (int day = 0; day < WorkingDayPerMonth; day++)
+            int totalempHr = 0;
+            int totalWorkingDays = 0;
+            while (totalempHr < WorkingHrPerMonth && totalWorkingDays < WorkingDayPerMonth)
             {
+                totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -32,12 +34,11 @@ namespace EmpWage
                         empHr = 0;
                         break;
                 }
-
-                empWage = empRatePerHr * empHr;
-                Console.WriteLine("emp wage is:" + empWage);
+                totalempHr += empHr;
+                Console.WriteLine("employee working day in month:" + totalWorkingDays + "totalempHr:" + totalempHr);
             }
-                totalempWage += empWage;
-                Console.WriteLine("emp totalwage is:" + totalempWage);
+            int totalempWage = totalempHr * empRatePerHr;
+            Console.WriteLine("emp wage is:" + totalempWage);
 
         }
     }
