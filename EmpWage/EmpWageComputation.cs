@@ -13,24 +13,27 @@ namespace EmpWage
             int empRatePerHr = 20;
             int empHr = 0;
             int totalWage = 0;
-            Random random = new Random();
-            int empCheck = random.Next(0, 3);
-            if(empCheck==IS_FULL_TIME_PRESENT)
             {
-                empHr = 8;
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                switch (empCheck)
+                {
+                    case 1:
+                        empHr = 8;
+                        break;
+
+                    case 2:
+                        empHr = 4;
+                        break;
+                    default:
+                        empHr = 0;
+                        break;
+                }
+                totalWage = (empHr * empRatePerHr);
+                Console.WriteLine("total employee wage is:" + totalWage);
+
             }
-            else if(empCheck==IS_PART_TIME_PRESENT)
-            {
-                empHr = 4;
-            }
-            else
-            {
-                empHr = 0;
-            }
-            totalWage = (empHr * empRatePerHr);
-            Console.WriteLine("total employee wage is:" + totalWage);
 
         }
-        
     }
 }
