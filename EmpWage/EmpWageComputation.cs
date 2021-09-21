@@ -6,40 +6,34 @@ namespace EmpWage
 {
     class EmpWageComputation
     {
-        public const int IS_FULL_TIME_PRESENT = 1;
-        public const int IS_PART_TIME_PRESENT = 2;
-        public const int empRatePerHr = 20;
-        public const int WorkingDayPerMonth = 20;
-        public const int WorkingHrPerMonth = 100;
-        public void EmpComputation()
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public static int EmpWage(string companyname, int wageperhour, int workingdayspermonth, int totalworkinghoursinamonth)
         {
-            int empHr = 0;
-            int totalempHr = 0;
-            int totalWorkingDays = 0;
-            while (totalempHr < WorkingHrPerMonth && totalWorkingDays < WorkingDayPerMonth)
+            int emphours = 0;
+            int wagespermonth = 0;
+            int totalworkingdays = 0;
+            int employeehrinmonth = 0;
+            while (employeehrinmonth < totalworkinghoursinamonth && totalworkingdays < workingdayspermonth)
             {
-                totalWorkingDays++;
+                totalworkingdays++;
                 Random random = new Random();
-                int empCheck = random.Next(0, 3);
-                switch (empCheck)
+                int empcheck = random.Next(0, 2);
+                switch (empcheck)
                 {
-                    case IS_FULL_TIME_PRESENT:
-                        empHr = 8;
+                    case IS_FULL_TIME:
+                        emphours = 8;
                         break;
-
-                    case IS_PART_TIME_PRESENT:
-                        empHr = 4;
-                        break;
-                    default:
-                        empHr = 0;
+                    case IS_PART_TIME:
+                        emphours = 8;
                         break;
                 }
-                totalempHr += empHr;
-                Console.WriteLine("employee working day in month:" + totalWorkingDays + "totalempHr:" + totalempHr);
+                employeehrinmonth = employeehrinmonth + emphours;
             }
-            int totalempWage = totalempHr * empRatePerHr;
-            Console.WriteLine("emp wage is:" + totalempWage);
-
+            wagespermonth +=employeehrinmonth*wageperhour ;
+            Console.WriteLine("Company name is " + companyname + " and total wage is " + wagespermonth);
+            return wagespermonth;
         }
     }
 }
+
