@@ -6,9 +6,13 @@ namespace EmpWage
     {
         static void Main(string[] args)
         {
-            EmpWageComputation.EmpWage("wipro", 30, 20, 100);
-            EmpWageComputation.EmpWage("Tcs", 20, 50, 150);
-            EmpWageComputation.EmpWage("infosys", 30, 40, 100);
+            EmpWageBuilderObject wipro=new EmpWageBuilderObject("wipro", 30, 20, 100);
+            wipro.computeEmpWage();
+            Console.WriteLine(wipro.tostring());
+            EmpWageBuilderObject Tcs = new EmpWageBuilderObject("tcs", 40, 30, 120);
+            Tcs.computeEmpWage();
+            Console.WriteLine(Tcs.tostring());
+            
         }
     }
 }
